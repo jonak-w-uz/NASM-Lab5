@@ -20,6 +20,21 @@ _start:
     ; Zachowaj liczbe odczytanych bajtow.
     mov [liczba_bajtow], rax
 
+    mov rdi, bufor
+    mov rsi, qword [liczba_bajtow]
+    call print_text
+    jmp koniec
+
+print_text:
+    mov rdx, rsi
+    mov rsi, rdi
+
+    mov rax, 1
+    mov rdi, 0
+
+    syscall
+
+    ret
 koniec:
     ; Ustaw tutaj breakpoint, aby obejrzec bufor.
     mov rax, 60
